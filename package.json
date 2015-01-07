@@ -1,0 +1,15 @@
+{
+    "name": "angularjs-requirejs-jasmine-karma-protractor-seed",
+    "version": "1.0.0",
+    "description": "angularjs-requirejs-jasmine-karma-protractor-seed",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git@github-nuweb:nuweb/angularjs-requirejs-jasmine-karma-protractor-seed.git"
+    },
+    "author": "Chandra Sekhar Veera",
+    "license": "ISC"
+}
