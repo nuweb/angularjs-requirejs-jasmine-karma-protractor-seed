@@ -8,6 +8,11 @@ server.use(restify.acceptParser(server.acceptable));
 server.use(restify.queryParser());
 server.use(restify.bodyParser());
 
+server.get(/.*/, restify.serveStatic({
+    directory: __dirname, // indicates current working directory
+    default: "index.html"
+}));
+
 server.listen(8000, function() {
     console.log('%s listening at %s', server.name, server.url);
 });
