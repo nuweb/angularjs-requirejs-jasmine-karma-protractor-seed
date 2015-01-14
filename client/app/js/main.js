@@ -1,9 +1,9 @@
 requirejs.config({
     paths: {
-        angular: '../bower_components/angular/angular',
-        angularRoute: '../bower_components/angular-route/angular-route',
-        jquery: '../bower_components/jquery/dist/jquery.min',
-        bootstrap: '../bower_components/bootstrap/dist/bootstrap.min'
+        angular: '/client/bower_components/angular/angular',
+        angularRoute: '/client/bower_components/angular-route/angular-route',
+        jquery: '/client/bower_components/jquery/dist/jquery.min',
+        bootstrap: '/client/bower_components/bootstrap/dist/js/bootstrap.min'
     },
     shim: {
         'angularRoute': {
@@ -16,4 +16,12 @@ requirejs.config({
             deps: ['angular', 'angularRoute', 'bootstrap']
         }
     }
+});
+
+require([
+    'app'
+], function() {
+    return angular.element(document).ready(function() {
+        angular.bootstrap(document, ['App']);
+    });
 });
