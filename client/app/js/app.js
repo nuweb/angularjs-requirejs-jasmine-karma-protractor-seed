@@ -1,4 +1,4 @@
-angular.module('App', [])
+angular.module('App', ['ngRoute'])
 
 .controller('AppCtrl', ['$scope',
     function($scope) {
