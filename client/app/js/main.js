@@ -12,6 +12,9 @@ requirejs.config({
         'bootstrap': {
             deps: ['jquery']
         },
+        'home/home': {
+            deps: ['app']
+        },
         'app': {
             deps: ['angular', 'angularRoute', 'bootstrap']
         }
@@ -19,9 +22,9 @@ requirejs.config({
 });
 
 require([
-    'app'
+    'home/home'
 ], function() {
     return angular.element(document).ready(function() {
-        angular.bootstrap(document, ['App']);
+        angular.bootstrap(document, ['AngularSuperhero']);
     });
 });
