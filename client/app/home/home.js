@@ -2,8 +2,8 @@ angular.module('home', [])
 
 .config(['$routeProvider',
     function($routeProvider) {
-        $routeProvider.when('/app/js/home', {
-            templateUrl: 'app/js/home/home.tpl.html',
+        $routeProvider.when('/app/home', {
+            templateUrl: 'app/home/home.tpl.html',
             controller: 'HomeCtrl'
         });
     }

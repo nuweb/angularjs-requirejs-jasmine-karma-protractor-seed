@@ -3,7 +3,7 @@ angular.module('AngularSuperhero', ['ngRoute', 'home'])
 .config(['$routeProvider',
     function($routeProvider) {
         $routeProvider.otherwise({
-            redirectTo: '/app/js/home'
+            redirectTo: '/app/home'
         })
     }
 ])
