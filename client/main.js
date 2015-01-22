@@ -3,7 +3,9 @@ requirejs.config({
         angular: 'bower_components/angular/angular',
         angularRoute: 'bower_components/angular-route/angular-route',
         jquery: 'bower_components/jquery/dist/jquery.min',
-        bootstrap: 'bower_components/bootstrap/dist/js/bootstrap.min'
+        bootstrap: 'bower_components/bootstrap/dist/js/bootstrap.min',
+        homepage: 'app/home/home',
+        loginpage: 'app/login/login'
     },
     shim: {
         'angularRoute': {
@@ -12,7 +14,10 @@ requirejs.config({
         'bootstrap': {
             deps: ['jquery']
         },
-        'app/home/home': {
+        'homepage': {
+            deps: ['app']
+        },
+        'loginpage': {
             deps: ['app']
         },
         'app': {
@@ -22,7 +27,8 @@ requirejs.config({
 });
 
 require([
-    'app/home/home'
+    'homepage',
+    'loginpage',
 ], function() {
     return angular.element(document).ready(function() {
         angular.bootstrap(document, ['AngularSuperhero']);

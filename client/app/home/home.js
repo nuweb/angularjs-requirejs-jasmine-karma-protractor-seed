@@ -11,6 +11,7 @@ angular.module('home', [])
 
 .controller('HomeCtrl', ['$scope',
     function($scope) {
-        $scope.docTitle = 'Angular Apps homepage';
+        console.log('Angular home');
+        $scope.docTitle = 'Home page';
     }
 ]);
