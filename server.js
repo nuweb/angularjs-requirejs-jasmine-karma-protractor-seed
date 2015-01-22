@@ -9,7 +9,7 @@ server.use(restify.queryParser());
 server.use(restify.bodyParser());
 
 server.get(/.*/, restify.serveStatic({
-    directory: __dirname, // indicates current working directory
+    directory: './client', // indicates current working directory
     default: "index.html"
 }));
 

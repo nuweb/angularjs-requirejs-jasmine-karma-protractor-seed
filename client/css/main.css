@@ -6512,4 +6512,11 @@ a.list-group-item-danger.active:focus {
 }
 .jumbotron {
   background-color: #314252;
+  margin-top: 10px;
+}
+.jumbotron p {
+  font-size: inherit;
+}
+.page-header {
+  border-bottom: none;
 }

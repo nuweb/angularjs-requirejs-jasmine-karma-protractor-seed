@@ -6,7 +6,7 @@ module.exports = function(grunt) {
                     yuicompress: true
                 },
                 files: {
-                    'client/app/css/main.css': 'client/app/less/main.less'
+                    'client/css/main.css': 'client/less/main.less'
                 }
             }
         },
