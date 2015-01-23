@@ -6545,7 +6545,6 @@ a.list-group-item-danger.active:focus {
 }
 .ang-alert-inline-arrow-up {
   position: absolute;
-  right: 0;
   top: -5px;
   width: 0;
   height: 0;
