@@ -11,7 +11,7 @@ angular.module('home', [])
 
 .controller('HomeCtrl', ['$scope',
     function($scope) {
-        console.log('Angular home');
+        console.info('%cHome Controller', 'color:blue');
         $scope.docTitle = 'Home page';
     }
 ]);

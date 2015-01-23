@@ -11,7 +11,7 @@ angular.module('login', [])
 
 .controller('LoginCtrl', ['$scope',
     function($scope) {
-        console.log('Angular Login');
+        console.info('%cLogin Controller', 'color:blue');
         $scope.docTitle = 'Login page'
     }
 ]);

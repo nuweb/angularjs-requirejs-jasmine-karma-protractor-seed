@@ -6533,3 +6533,23 @@ a.list-group-item-danger.active:focus {
     margin-right: 0;
   }
 }
+/* Error messages */
+.ang-alert-inline {
+  position: relative;
+  right: 0;
+  padding: 5px;
+  margin: 4px 0 0 0;
+  background-color: #be1e2d;
+  font-size: 12px;
+  z-index: 1;
+}
+.ang-alert-inline-arrow-up {
+  position: absolute;
+  right: 0;
+  top: -5px;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid #be1e2d;
+}
