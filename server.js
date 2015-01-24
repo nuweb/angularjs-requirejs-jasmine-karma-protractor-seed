@@ -1,18 +1,18 @@
-var restify = require('restify');
-var server = restify.createServer({
-    name: 'forms',
-    version: '1.0.0'
+var express = require('express');
+var bodyParser = require('body-parser');
+var morgan = require('morgan');
+var app = express();
+
+app.use(express.static(__dirname + "/client"));
+app.listen(8000, function() {
+    console.log('Listening on port 8000');
 });
 
-server.use(restify.acceptParser(server.acceptable));
-server.use(restify.queryParser());
-server.use(restify.bodyParser());
+app.use(bodyParser());
+app.use(morgan());
 
-server.get(/.*/, restify.serveStatic({
-    directory: './client', // indicates current working directory
-    default: "index.html"
-}));
+//	Routes
+var routes = {};
+routes.users = require('./server/routes/users.js');
 
-server.listen(8000, function() {
-    console.log('%s listening at %s', server.name, server.url);
-});
+app.post('/user/login', routes.users.login);

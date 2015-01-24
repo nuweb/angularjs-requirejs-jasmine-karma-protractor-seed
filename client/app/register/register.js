@@ -12,6 +12,6 @@ angular.module('register', [])
 .controller('RegisterCtrl', ['$scope',
     function($scope) {
         console.info('%cRegister Controller', 'color:blue');
-        $scope.docTitle = 'Register page'
+        $scope.$emit('UPDATE_PAGE_TITLE', 'Register Page');
     }
 ]);
