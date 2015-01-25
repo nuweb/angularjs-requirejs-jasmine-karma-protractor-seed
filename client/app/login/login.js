@@ -16,19 +16,32 @@ angular.module('login', [])
         //	Login Callback
         console.log($scope);
         $scope.login = function() {
-            UserService.login($scope.credentials).success(function() {}).error(function() {});
+            UserService.login($scope.credentials).success(function() {
+                alert('Loging Success')
+            }).error(function() {
+                alert('Login Failure');
+            });
         }
     }
 ])
 
-.factory('UserService', ['$http',
-    function($http) {
+.factory('UserService', ['$http', 'SessionService',
+    function($http, SessionService) {
+        var cacheSession = function() {
+                SessionService.set('authenticated', true);
+            },
+            uncacheSession = function() {
+                SessionService.unset('authenticated');
+            };
         return {
             login: function(credentials) {
-                return $http.post('/user/login', {
+                var login = $http.post('/user/login', {
                     email: credentials.email,
                     password: credentials.password
                 });
+                login.success(cacheSession);
+                login.error(uncacheSession);
+                return login;
             },
             logout: function() {
 

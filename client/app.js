@@ -1,4 +1,4 @@
-angular.module('AngularSuperhero', ['ngRoute', 'home', 'login', 'register'])
+angular.module('AngularSuperhero', ['ngRoute', 'home', 'login', 'register', 'services'])
 
 .config(['$routeProvider',
     function($routeProvider) {

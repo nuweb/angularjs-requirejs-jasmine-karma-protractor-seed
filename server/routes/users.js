@@ -1,12 +1,16 @@
+var jwt = require('jsonwebtoken');
+
+var jwtSecret = 'IamAngularSuperhero';
+
 exports.login = function(req, res) {
     var user = {
         email: 'abcd@gmail.com',
         password: '111111'
     };
+    var token;
     var email = req.body.email || '';
     var password = req.body.password || '';
-    console.log(email);
-    console.log(password);
+
     if (!email || !password) {
         console.log('return 400');
         return res.send(400);
@@ -14,8 +18,15 @@ exports.login = function(req, res) {
     if (email !== user.email || password !== user.password) {
         return res.send(401);
     }
-    return res.json({
+
+    //	sign the secret for a token
+    token = jwt.sign({
         email: email
+    }, jwtSecret);
+
+    //	respond with a token
+    return res.json({
+        token: token
     });
 };
 
