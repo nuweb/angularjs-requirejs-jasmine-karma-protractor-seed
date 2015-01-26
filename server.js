@@ -1,6 +1,10 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
+var expressJwt = require('express-jwt');
+
+var secret = require('./server/config/jwt-secret');
+
 var app = express();
 
 app.use(express.static(__dirname + "/client"));
@@ -9,7 +13,13 @@ app.listen(8000, function() {
 });
 
 app.use(bodyParser());
-app.use(morgan());
+app.use(morgan('combined'));
+
+app.use(expressJwt({
+    secret: secret.jwtSecret
+}).unless({
+    path: ['/user/login']
+}));
 
 //	Routes
 var routes = {};

@@ -9,29 +9,28 @@ angular.module('login', [])
     }
 ])
 
-.controller('LoginCtrl', ['$scope', 'UserService',
-    function($scope, UserService) {
+.controller('LoginCtrl', ['$scope', 'userService', 'sessionService',
+    function($scope, userService, sessionService) {
         console.info('%cLogin Controller', 'color:blue');
         $scope.$emit('UPDATE_PAGE_TITLE', 'Login Page');
         //	Login Callback
-        console.log($scope);
         $scope.login = function() {
-            UserService.login($scope.credentials).success(function() {
-                alert('Loging Success')
+            userService.login($scope.credentials).success(function(data, status, headers, config) {
+                sessionService.set('token', data.token);
             }).error(function() {
-                alert('Login Failure');
+
             });
         }
     }
 ])
 
-.factory('UserService', ['$http', 'SessionService',
-    function($http, SessionService) {
+.factory('userService', ['$http', 'sessionService',
+    function($http, sessionService) {
         var cacheSession = function() {
-                SessionService.set('authenticated', true);
+                sessionService.set('authenticated', true);
             },
             uncacheSession = function() {
-                SessionService.unset('authenticated');
+                sessionService.unset('authenticated');
             };
         return {
             login: function(credentials) {

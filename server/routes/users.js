@@ -1,6 +1,5 @@
 var jwt = require('jsonwebtoken');
-
-var jwtSecret = 'IamAngularSuperhero';
+var secret = require('./../config/jwt-secret');
 
 exports.login = function(req, res) {
     var user = {
@@ -22,7 +21,7 @@ exports.login = function(req, res) {
     //	sign the secret for a token
     token = jwt.sign({
         email: email
-    }, jwtSecret);
+    }, secret.jwtSecret);
 
     //	respond with a token
     return res.json({
