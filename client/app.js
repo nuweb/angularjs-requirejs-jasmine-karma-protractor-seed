@@ -14,9 +14,11 @@ angular.module('AngularSuperhero', ['ngRoute', 'home', 'login', 'register', 'ser
     function($rootScope, $location, sessionService) {
         $rootScope.$on("$routeChangeStart", function(event, nextRoute, currentRoute) {
             if (!sessionService.get('token') && !sessionService.get('authenticated')) {
-                //	redirect if no token is set
                 console.log('User not authenticated, redirecting...');
                 $location.path('/app/login');
+                $rootScope.loginBtnTxt = 'Login';
+            } else {
+                $rootScope.loginBtnTxt = 'Logout';
             }
         });
     }
