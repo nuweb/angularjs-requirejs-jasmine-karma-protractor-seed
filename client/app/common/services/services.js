@@ -28,4 +28,17 @@ angular.module('services', [])
             }
         };
     }
+])
+
+.factory('authService', ['$location', '$q', 'sessionService',
+    function($location, $q, sessionService) {
+        var deferred = $q.defer();
+        if (sessionService.get('authenticated')) {
+            deferred.resolve();
+        } else {
+            deferred.reject();
+            $location.path('/app/login');
+        }
+        return deferred.promise;
+    }
 ]);

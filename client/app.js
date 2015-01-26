@@ -9,6 +9,19 @@ angular.module('AngularSuperhero', ['ngRoute', 'home', 'login', 'register', 'ser
     }
 ])
 
+
+.run(['$rootScope', '$location', 'sessionService',
+    function($rootScope, $location, sessionService) {
+        $rootScope.$on("$routeChangeStart", function(event, nextRoute, currentRoute) {
+            if (!sessionService.get('token') && !sessionService.get('authenticated')) {
+                //	redirect if no token is set
+                console.log('User not authenticated, redirecting...');
+                $location.path('/app/login');
+            }
+        });
+    }
+])
+
 .controller('AppCtrl', ['$scope',
     function($scope) {
         $scope.greeting = 'Welcome';

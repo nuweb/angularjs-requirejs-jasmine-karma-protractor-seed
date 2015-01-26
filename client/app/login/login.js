@@ -9,14 +9,15 @@ angular.module('login', [])
     }
 ])
 
-.controller('LoginCtrl', ['$scope', 'userService', 'sessionService',
-    function($scope, userService, sessionService) {
+.controller('LoginCtrl', ['$scope', 'userService', 'sessionService', '$location',
+    function($scope, userService, sessionService, $location) {
         console.info('%cLogin Controller', 'color:blue');
         $scope.$emit('UPDATE_PAGE_TITLE', 'Login Page');
         //	Login Callback
         $scope.login = function() {
             userService.login($scope.credentials).success(function(data, status, headers, config) {
                 sessionService.set('token', data.token);
+                $location.path('/app/home');
             }).error(function() {
 
             });
