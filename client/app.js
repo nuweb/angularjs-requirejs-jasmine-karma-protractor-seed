@@ -24,12 +24,16 @@ angular.module('AngularSuperhero', ['ngRoute', 'home', 'login', 'register', 'ser
     }
 ])
 
-.controller('AppCtrl', ['$scope',
-    function($scope) {
+.controller('AppCtrl', ['$scope', 'sessionService',
+    function($scope, sessionService) {
         $scope.greeting = 'Welcome';
         $scope.docTitle = 'AngularSuperhero';
         $scope.$on('UPDATE_PAGE_TITLE', function(event, message) {
             $scope.docTitle = message || 'AngularSuperhero';
         });
+        $scope.logout = function() {
+            sessionService.unset('authenticated');
+            sessionService.unset('token');
+        };
     }
 ]);

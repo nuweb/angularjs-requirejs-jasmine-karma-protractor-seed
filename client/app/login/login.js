@@ -19,7 +19,7 @@ angular.module('login', [])
                 sessionService.set('token', data.token);
                 $location.path('/app/home');
             }).error(function() {
-
+                //  TODO: show error messages
             });
         }
     }
@@ -32,6 +32,7 @@ angular.module('login', [])
             },
             uncacheSession = function() {
                 sessionService.unset('authenticated');
+                sessionService.unset('token');
             };
         return {
             login: function(credentials) {
@@ -42,9 +43,6 @@ angular.module('login', [])
                 login.success(cacheSession);
                 login.error(uncacheSession);
                 return login;
-            },
-            logout: function() {
-
             },
             register: function() {
 
