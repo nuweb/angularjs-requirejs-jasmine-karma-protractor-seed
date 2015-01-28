@@ -1,5 +1,6 @@
 var jwt = require('jsonwebtoken');
 var secret = require('./../config/jwt-secret');
+var db = require('../config/mongodb');
 
 exports.login = function(req, res) {
     var user = {
@@ -12,10 +13,10 @@ exports.login = function(req, res) {
 
     if (!email || !password) {
         console.log('return 400');
-        return res.send(400);
+        return res.send(400); //  Bad request
     }
     if (email !== user.email || password !== user.password) {
-        return res.send(401);
+        return res.send(401); //  Unauthorized request
     }
 
     //	sign the secret for a token
