@@ -1,10 +1,13 @@
+'use strict';
+
 angular.module('login', [])
 
 .config(['$routeProvider',
     function($routeProvider) {
         $routeProvider.when('/app/login', {
             templateUrl: 'app/login/login.tpl.html',
-            controller: 'LoginCtrl'
+            controller: 'LoginCtrl',
+            needsAuth: false
         });
     }
 ])
@@ -15,11 +18,18 @@ angular.module('login', [])
         $scope.$emit('UPDATE_PAGE_TITLE', 'Login Page');
         //	Login Callback
         $scope.login = function() {
+            $scope.submitted = true;
+            if ($scope.loginForm.$invalid && $scope.submitted) {
+                console.log('Login form is invalid');
+                console.log($scope.loginForm.password.$error);
+                return;
+            }
             userService.login($scope.credentials).success(function(data, status, headers, config) {
                 sessionService.set('token', data.token);
                 $location.path('/app/home');
             }).error(function() {
                 //  TODO: show error messages
+                $scope.submitted = false;
             });
         }
     }

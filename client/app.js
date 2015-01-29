@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('AngularSuperhero', ['ngRoute', 'home', 'login', 'register', 'services'])
 
 .config(['$routeProvider', '$httpProvider',
@@ -13,9 +15,12 @@ angular.module('AngularSuperhero', ['ngRoute', 'home', 'login', 'register', 'ser
 .run(['$rootScope', '$location', 'sessionService',
     function($rootScope, $location, sessionService) {
         $rootScope.$on("$routeChangeStart", function(event, nextRoute, currentRoute) {
+            var needsAuth = (nextRoute && nextRoute.needsAuth);
             if (!sessionService.get('token') && !sessionService.get('authenticated')) {
-                console.log('User not authenticated, redirecting...');
-                $location.path('/app/login');
+                if (needsAuth) {
+                    console.log('User not authenticated, redirecting...');
+                    $location.path('/app/login');
+                }
                 $rootScope.loginBtnTxt = 'Login';
             } else {
                 $rootScope.loginBtnTxt = 'Logout';
