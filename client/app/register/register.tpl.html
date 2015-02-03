@@ -10,7 +10,7 @@
 		<div ng-show="submitted && registerForm.password.$error.required" class="alert alert-danger ang-alert-inline"><div class="ang-alert-inline-arrow-up"></div>Please enter valid password.</div>
 		<div ng-show="submitted && (registerForm.password.$error.minlength || registerForm.password.$error.maxlength)" class="alert alert-danger ang-alert-inline"><div class="ang-alert-inline-arrow-up"></div>Password should at least be 8 characters and not more than 15 characters.</div>
 		<input name="confirmPassword" ng-model="credentials.confirmPassword" type="password" id="confirmPassword" class="form-control" placeholder="Confirm Password" required minlength="8" maxlength="15">
-		<div ng-show="submitted && registerForm.confirmPassword.$error.required" class="alert alert-danger ang-alert-inline"><div class="ang-alert-inline-arrow-up"></div>Please enter valid password.</div>
+		<div ng-show="submitted && registerForm.confirmPassword.$error.required" class="alert alert-danger ang-alert-inline"><div class="ang-alert-inline-arrow-up"></div>Please enter valid confirm password.</div>
 		<div ng-show="submitted && (registerForm.confirmPassword.$error.minlength || registerForm.confirmPassword.$error.maxlength)" class="alert alert-danger ang-alert-inline"><div class="ang-alert-inline-arrow-up"></div>Confirm Password should at least be 8 characters and not more than 15 characters.</div>
 		<br>
 		<button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
