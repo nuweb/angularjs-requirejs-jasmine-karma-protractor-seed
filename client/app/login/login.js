@@ -19,7 +19,7 @@ angular.module('login', [])
         //	Login Callback
         $scope.login = function() {
             $scope.submitted = true;
-            if ($scope.loginForm.$invalid && $scope.submitted) {
+            if ($scope.loginForm.$invalid) {
                 console.log('Login form is invalid');
                 console.log($scope.loginForm.password.$error);
                 return;
@@ -53,9 +53,6 @@ angular.module('login', [])
                 login.success(cacheSession);
                 login.error(uncacheSession);
                 return login;
-            },
-            register: function() {
-
             }
         }
     }

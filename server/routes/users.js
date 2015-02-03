@@ -3,10 +3,6 @@ var secret = require('./../config/jwt-secret');
 var db = require('../config/mongodb');
 
 exports.login = function(req, res) {
-    var user = {
-        email: 'abcd@gmail.com',
-        password: '111111'
-    };
     var token;
     var email = req.body.email || '';
     var password = req.body.password || '';
@@ -15,18 +11,32 @@ exports.login = function(req, res) {
         console.log('return 400');
         return res.send(400); //  Bad request
     }
-    if (email !== user.email || password !== user.password) {
-        return res.send(401); //  Unauthorized request
-    }
 
-    //	sign the secret for a token
-    token = jwt.sign({
+    db.userModel.findOne({
         email: email
-    }, secret.jwtSecret);
+    }, function(err, user) {
+        if (err) {
+            console.log(err);
+            return res.send(401);
+        }
+        if (!user) {
+            return res.send(401);
+        }
+        user.comparePassword(password, function(isMatch) {
+            if (!isMatch) {
+                console.log('Attempt to login with ' + user.email + ' failed!');
+                return res.send(401);
+            }
+            //  sign the secret for a token
+            token = jwt.sign({
+                email: email
+            }, secret.jwtSecret);
 
-    //	respond with a token
-    return res.json({
-        token: token
+            //  respond with a token
+            return res.json({
+                token: token
+            });
+        });
     });
 };
 

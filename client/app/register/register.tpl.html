@@ -1,1 +1,22 @@
-<p>This is registration template.</p>
+<div class="well bs-component login-container">
+	<!-- Login Form -->
+	<form name="registerForm" ng-submit="register(); submitted=true" class="form-register" novalidate>
+		<h2 class="form-register-heading">Register</h2>
+		<label for="email" class="sr-only">Email address</label>
+		<input ng-model="credentials.email" type="email" name="email" id="email" class="form-control" placeholder="Email address" required autofocus pattern='^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$'>
+		<div id="emailErrorMsg" ng-show="submitted && (registerForm.email.$error.required || registerForm.email.$error.pattern)" class="alert alert-danger ang-alert-inline"><div class="ang-alert-inline-arrow-up"></div>Please enter valid email address.</div>
+		<label for="password" class="sr-only">Password</label>
+		<input name="password" ng-model="credentials.password" type="password" id="password" class="form-control" placeholder="Password" required minlength="8" maxlength="15">
+		<div ng-show="submitted && registerForm.password.$error.required" class="alert alert-danger ang-alert-inline"><div class="ang-alert-inline-arrow-up"></div>Please enter valid password.</div>
+		<div ng-show="submitted && (registerForm.password.$error.minlength || registerForm.password.$error.maxlength)" class="alert alert-danger ang-alert-inline"><div class="ang-alert-inline-arrow-up"></div>Password should at least be 8 characters and not more than 15 characters.</div>
+		<input name="confirmPassword" ng-model="credentials.confirmPassword" type="password" id="confirmPassword" class="form-control" placeholder="Confirm Password" required minlength="8" maxlength="15">
+		<div ng-show="submitted && registerForm.confirmPassword.$error.required" class="alert alert-danger ang-alert-inline"><div class="ang-alert-inline-arrow-up"></div>Please enter valid password.</div>
+		<div ng-show="submitted && (registerForm.confirmPassword.$error.minlength || registerForm.confirmPassword.$error.maxlength)" class="alert alert-danger ang-alert-inline"><div class="ang-alert-inline-arrow-up"></div>Confirm Password should at least be 8 characters and not more than 15 characters.</div>
+		<br>
+		<button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+	</form>
+</div>
+<div class="row-fluid hide">
+<pre>Credentails: {{credentials | json}}</pre>
+<pre>Master: {{master | json}}</pre>
+</div>
