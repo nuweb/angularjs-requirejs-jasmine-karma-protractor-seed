@@ -1,7 +1,8 @@
 <div class="well bs-component login-container">
     <!-- Login Form -->
     <form name="loginForm" ng-submit="login();" class="form-signin" novalidate>
-        <h2 class="form-signin-heading">Sign in</h2>
+        <h2 class="form-signin-heading">Log in</h2>
+        <alerts></alerts>
         <label for="email" class="sr-only">Email address</label>
         <input ng-model="credentials.email" type="email" name="email" id="email" class="form-control" placeholder="Email address" required autofocus pattern='^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$'>
         <div id="emailErrorMsg" ng-show="submitted && (loginForm.email.$error.required || loginForm.email.$error.pattern)" class="alert alert-danger ang-alert-inline"><div class="ang-alert-inline-arrow-up"></div>Please enter valid email address.</div>
@@ -12,7 +13,7 @@
         <div class="checkbox">
             <label><input type="checkbox" value="stay-signed-in"> Stay signed in</label>
         </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Log in</button>
     </form>
 </div>
 

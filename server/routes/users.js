@@ -8,7 +8,6 @@ exports.login = function(req, res) {
     var password = req.body.password || '';
 
     if (!email || !password) {
-        console.log('return 400');
         return res.send(400); //  Bad request
     }
 
@@ -40,8 +39,27 @@ exports.login = function(req, res) {
     });
 };
 
-exports.logout = function(req, res) {};
-
 exports.register = function(req, res) {
+    var email = req.body.email || '';
+    var password = req.body.password || '';
+    var confirmPassword = req.body.confirmPassword || '';
 
+    if (!email || !password || !confirmPassword) {
+        return res.send(400);
+    }
+    console.log('Trying to save email: ' + email);
+    console.log('Trying to save password: ' + password);
+
+    var user = new db.userModel();
+    user.email = email;
+    user.password = password;
+
+    user.save(function(err) {
+        console.log('Trying to save new user');
+        if (err) {
+            console.log(err);
+            res.send(500);
+        }
+        res.send(200);
+    });
 };

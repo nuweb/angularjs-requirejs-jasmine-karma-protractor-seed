@@ -18,7 +18,7 @@ app.use(morgan('combined'));
 app.use(expressJwt({
     secret: secret.jwtSecret
 }).unless({
-    path: ['/user/login']
+    path: ['/user/login', '/user/register']
 }));
 
 //	Routes
@@ -26,3 +26,5 @@ var routes = {};
 routes.users = require('./server/routes/users.js');
 
 app.post('/user/login', routes.users.login);
+
+app.post('/user/register', routes.users.register);

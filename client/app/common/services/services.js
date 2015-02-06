@@ -16,6 +16,20 @@ angular.module('services', [])
     };
 })
 
+.factory('cacheService', ['sessionService',
+    function(sessionService) {
+        return {
+            cache: function() {
+                sessionService.set('authenticated', true);
+            },
+            uncache: function() {
+                sessionService.unset('authenticated');
+                sessionService.unset('token');
+            }
+        }
+    }
+])
+
 .factory('tokenInterceptor', ['$q', '$window', '$location', 'sessionService',
     function($q, $window, $location, sessionService) {
         'use strict';

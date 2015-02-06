@@ -19,6 +19,8 @@ angular.module('login', [])
         //	Login Callback
         $scope.login = function() {
             $scope.submitted = true;
+            $scope.alertDisplay = 'hide';
+
             if ($scope.loginForm.$invalid) {
                 console.log('Login form is invalid');
                 console.log($scope.loginForm.password.$error);
@@ -30,28 +32,24 @@ angular.module('login', [])
             }).error(function() {
                 //  TODO: show error messages
                 $scope.submitted = false;
+                $scope.alertMessage = 'Credentials are incorrect!';
+                $scope.alertDisplay = 'show';
+                $scope.alertType = 'danger';
             });
         }
     }
 ])
 
-.factory('userService', ['$http', 'sessionService',
-    function($http, sessionService) {
-        var cacheSession = function() {
-                sessionService.set('authenticated', true);
-            },
-            uncacheSession = function() {
-                sessionService.unset('authenticated');
-                sessionService.unset('token');
-            };
+.factory('userService', ['$http', 'sessionService', 'cacheService',
+    function($http, sessionService, cacheService) {
         return {
             login: function(credentials) {
                 var login = $http.post('/user/login', {
                     email: credentials.email,
                     password: credentials.password
                 });
-                login.success(cacheSession);
-                login.error(uncacheSession);
+                login.success(cacheService.cache);
+                login.error(cacheService.uncache);
                 return login;
             }
         }

@@ -7,7 +7,8 @@ requirejs.config({
         homepage: 'app/home/home',
         loginpage: 'app/login/login',
         registerpage: 'app/register/register',
-        services: 'app/common/services/services'
+        services: 'app/common/services/services',
+        directives: 'app/common/directives/directives'
     },
     shim: {
         'angularRoute': {
@@ -28,6 +29,9 @@ requirejs.config({
         'services': {
             deps: ['app']
         },
+        'directives': {
+            deps: ['app']
+        },
         'app': {
             deps: ['angular', 'angularRoute', 'bootstrap']
         }
@@ -38,7 +42,8 @@ require([
     'homepage',
     'loginpage',
     'registerpage',
-    'services'
+    'services',
+    'directives'
 ], function() {
     return angular.element(document).ready(function() {
         angular.bootstrap(document, ['AngularSuperhero']);

@@ -38,6 +38,7 @@ var User = new Schema({
 
 // Bcrypt middleware on UserSchema
 User.pre('save', function(next) {
+    console.log('Hash the password');
     var user = this;
     if (!user.isModified('password')) return next();
 
