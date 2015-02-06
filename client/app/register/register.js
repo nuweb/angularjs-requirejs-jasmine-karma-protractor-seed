@@ -32,8 +32,8 @@ angular.module('register', [])
     }
 ])
 
-.factory('registerService', ['$http', 'sessionService', 'cacheService',
-    function($http, $sessionService, cacheService) {
+.factory('registerService', ['$http', 'sessionService', 'authService',
+    function($http, $sessionService, authService) {
         return {
             register: function(credentials) {
                 var register = $http.post('/user/register', {
@@ -41,8 +41,8 @@ angular.module('register', [])
                     password: credentials.password,
                     confirmPassword: credentials.confirmPassword
                 });
-                register.success(cacheService.cache);
-                register.error(cacheService.uncache);
+                register.success(authService.cache);
+                register.error(authService.uncache);
                 return register;
             }
         }

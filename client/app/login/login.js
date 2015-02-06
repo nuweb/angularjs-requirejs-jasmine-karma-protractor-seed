@@ -40,16 +40,16 @@ angular.module('login', [])
     }
 ])
 
-.factory('userService', ['$http', 'sessionService', 'cacheService',
-    function($http, sessionService, cacheService) {
+.factory('userService', ['$http', 'sessionService', 'authService',
+    function($http, sessionService, authService) {
         return {
             login: function(credentials) {
                 var login = $http.post('/user/login', {
                     email: credentials.email,
                     password: credentials.password
                 });
-                login.success(cacheService.cache);
-                login.error(cacheService.uncache);
+                login.success(authService.cache);
+                login.error(authService.uncache);
                 return login;
             }
         }

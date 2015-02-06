@@ -16,7 +16,7 @@ angular.module('services', [])
     };
 })
 
-.factory('cacheService', ['sessionService',
+.factory('authService', ['sessionService',
     function(sessionService) {
         return {
             cache: function() {
