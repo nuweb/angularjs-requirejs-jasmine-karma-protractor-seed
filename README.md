@@ -11,14 +11,15 @@ An AngularJS 1.3 application that encompasses some of the best practices. Work i
 
 ##Stack:##
 
-AngularJS 1.3
-RequireJS
-Jasmine
-Karma
-Protractor
-Bootstrap (Bootswatch Superhero theme)
-MongoDB
-NodeJS
-
+<ul>
+	<li>AngularJS 1.3</li>
+	<li>RequireJS</li>
+	<li>Jasmine</li>
+	<li>Karma</li>
+	<li>Protractor</li>
+	<li>Bootstrap (Bootswatch Superhero theme)</li>
+	<li>MongoDB</li>
+	<li>NodeJS</li>
+</ul>
 
 JWT Implementation is inspired from <a href="https://github.com/kdelemme/blogjs">BlogJS</a>.
