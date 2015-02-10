@@ -4,14 +4,14 @@
 An AngularJS 1.3 application that encompasses some of the best practices.
 
 
-##Application Features:##
+##Application Featuress##
 
 1. Login/Logout
 2. JWT Authentication
 3. Karma Unit tests
 4. Protractor e2e tests
 
-##Stack:##
+##Stack##
 
 <ul>
 	<li>AngularJS 1.3</li>
