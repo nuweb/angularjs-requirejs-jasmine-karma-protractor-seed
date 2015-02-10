@@ -1,17 +1,17 @@
-##Work in progress...##
+###Work in progress...###
 
-####AngularJS RequireJS Jasmine Karma Protractor Bootstrap Seed####
+##AngularJS RequireJS Jasmine Karma Protractor Bootstrap Seed##
 An AngularJS 1.3 application that encompasses some of the best practices.
 
 
-##Application Featuress##
+###Application Featuress###
 
 1. Login/Logout
 2. JWT Authentication
 3. Karma Unit tests
 4. Protractor e2e tests
 
-##Stack##
+###Stack###
 
 <ul>
 	<li>AngularJS 1.3</li>
