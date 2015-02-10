@@ -21,4 +21,4 @@ MongoDB
 NodeJS
 
 
-JWT Implementation is forked from <a href="https://github.com/kdelemme/blogjs">BlogJS</a>.
+JWT Implementation is inspired from <a href="https://github.com/kdelemme/blogjs">BlogJS</a>.
