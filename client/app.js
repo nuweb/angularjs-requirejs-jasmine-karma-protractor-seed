@@ -11,7 +11,6 @@ angular.module('AngularSuperhero', ['ngRoute', 'home', 'login', 'register', 'ser
     }
 ])
 
-
 .run(['$rootScope', '$location', 'sessionService',
     function($rootScope, $location, sessionService) {
         $rootScope.$on("$routeChangeStart", function(event, nextRoute, currentRoute) {
