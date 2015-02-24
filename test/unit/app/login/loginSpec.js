@@ -18,5 +18,11 @@ define(['login'], function() {
                 $scope: $scope
             });
         }));
+        it('ensure page title gets updated', function() {
+            spyOn($scope, '$emit');
+            // do whatever triggers the "$emit" call
+            //expect($scope.$emit).toHaveBeenCalledWith('UPDATE_PAGE_TITLE');
+        });
+
     });
 });
