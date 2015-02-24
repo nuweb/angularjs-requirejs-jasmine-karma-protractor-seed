@@ -7,10 +7,16 @@ define(['login'], function() {
         it('login module is instantiated', function() {
             expect(module).toBeTruthy();
         });
-        describe('user should', function() {
-            it('ensure server-side errors are hidden when the form submission happens ', function() {
+    });
+    describe('Login controller tests', function() {
+        var $scope, ctrl;
+        beforeEach(module('login'));
 
+        beforeEach(inject(function($rootScope, $controller) {
+            $scope = $rootScope.$new();
+            ctrl = $controller('LoginCtrl', {
+                $scope: $scope
             });
-        });
+        }));
     });
 });
